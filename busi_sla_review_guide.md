@@ -138,7 +138,7 @@ Verify the exact Google Sheets formulas I should use once the 40 valid RESOLVED 
 ### SECTION B: Inspect Raw Data & Remove Duplicate Rows (`00:20 – 04:30`)
 
 1. **Speak while slowly scrolling down `Raw_Incidents` with your mouse (~35s of mouse-driven inspection to boost mouse time):**
-   > 🎤 "In the bottom-left sheet tab bar of Google Sheets, we are on the `Raw_Incidents` tab, which contains forty-five incident rows from row 2 to row 46 across Test Company 1 through Test Company 4. Before we run any formulas, let's scroll down the table in the center grid to inspect the data quality. Notice on rows 6 and 7 we have a duplicate entry for `TKT-1006`, further down we have a duplicate entry for `TKT-1026`, and at the bottom on rows 44 through 46 we have three tickets—`TKT-1041`, `TKT-1042`, and `TKT-1043`—with a status of `CANCELLED` in column F. Let's scroll back up to row 1."
+   > 🎤 "In the bottom-left sheet tab bar of Google Sheets, we are on the `Raw_Incidents` tab, which contains forty-five incident rows from row 2 to row 46 across Test Company 1 through Test Company 4. Before we run any formulas, let's scroll down the table in the center grid to inspect the data quality. Notice `TKT-1026` on row 3 is duplicated further down on row 41, `TKT-1006` on row 5 is duplicated on row 28, and in column F we have three `CANCELLED` tickets: `TKT-1042` on row 7, `TKT-1043` on row 18, and `TKT-1041` on row 32. Let's scroll back up to row 1."
 2. **Speak, then click:**
    > 🎤 "I will click cell A1 in the top-left corner of the sheet and press `Command + A` to select the entire table range `A1:H46` so we can remove the duplicate ticket records."
 3. **Action:** Click cell `A1` and press `Cmd + A`.
@@ -192,7 +192,7 @@ Verify the exact Google Sheets formulas I should use once the 40 valid RESOLVED 
    > 🎤 "In cell J2 on row 2 of `Cleaned`, I will type `=IF(H2<=G2, \"Met\", \"Breached\")` and press Enter to classify whether each incident met or breached its target SLA hours, then fill the formula down to cell J41."
 6. **Action:** Type `=IF(H2<=G2, "Met", "Breached")` in `J2`, press **Enter**, and fill down to `J41`.
 7. **Speak while slowly scrolling down columns `I` and `J` with the mouse (~30s of mouse inspection):**
-   > 🎤 "Let's scroll down columns I and J in the center grid of `Cleaned` using the mouse to verify our row-level results. On row 11, `TKT-1010` for Test Company 1 took 11 hours against a 4-hour P1 SLA, showing 7 overrun hours and `Breached`. Scrolling further down to rows 20 and 21, Test Company 2 has two breached tickets (`TKT-1019` and `TKT-1020`). And on rows 28 through 31, Test Company 3 has four consecutive breached tickets (`TKT-1027` through `TKT-1030`), whereas Test Company 4 at the bottom has zero breaches across all ten of its tickets."
+   > 🎤 "Let's scroll down columns I and J in the center grid of `Cleaned` using the mouse to verify our row-level results. On row 4, `TKT-1027` for Test Company 3 took 12 hours against an 8-hour P2 SLA, showing 4 overrun hours and `Breached`. On row 14, `TKT-1020` for Test Company 2 shows 5 overrun hours and `Breached`, and on row 18, `TKT-1010` for Test Company 1 shows 7 overrun hours and `Breached`. Scrolling further down, we see the remaining breaches on row 22 (`TKT-1028`), row 25 (`TKT-1030`), row 36 (`TKT-1019`), and row 40 (`TKT-1029`), while all ten tickets for Test Company 4 show `0` overrun and `Met`."
 
 ---
 
