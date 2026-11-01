@@ -154,45 +154,45 @@ Verify the exact Google Sheets formulas I should use once the 40 valid RESOLVED 
 
 ---
 
-### SECTION C: Filter Out `CANCELLED` Tickets into `Cleaned_Incidents` (`04:30 – 08:00`)
+### SECTION C: Filter Out `CANCELLED` Tickets into `Cleaned` (`04:30 – 08:00`)
 
 1. **Speak, then click:**
    > 🎤 "In the bottom-left corner of Google Sheets, I will click the plus icon labeled `Add Sheet` to create a new tab for our cleaned, resolved incidents."
 2. **Action:** Click **`+` (Add Sheet)** in the bottom-left bar.
-3. **Speak, then rename the new tab (~6s):**
-   > 🎤 "In the bottom sheet tab bar of Google Sheets, I will double-click `Sheet1`, type `Cleaned_Incidents`, and press Enter to name our filtered tab."
-4. **Action:** Rename tab to `Cleaned_Incidents`.
+3. **Speak, then rename the new tab (~4s):**
+   > 🎤 "In the bottom sheet tab bar of Google Sheets, I will double-click `Sheet1`, type `Cleaned`, and press Enter to name our filtered tab."
+4. **Action:** Rename tab to `Cleaned`.
 5. **Speak, then copy headers from `Raw_Incidents`:**
    > 🎤 "In the bottom tab bar of Google Sheets, I will click the `Raw_Incidents` tab, select cells `A1` through `H1` in row 1 of the center grid, and press `Command + C` to copy the eight column headers."
 6. **Action:** Copy `A1:H1` from `Raw_Incidents`.
-7. **Speak, then paste headers into `Cleaned_Incidents`:**
-   > 🎤 "In the bottom tab bar of Google Sheets, I will click the `Cleaned_Incidents` tab, click cell A1 in the top-left corner of the grid, and press `Command + V` to paste the headers."
-8. **Action:** Switch to `Cleaned_Incidents`, click `A1`, and press `Cmd + V`.
+7. **Speak, then paste headers into `Cleaned`:**
+   > 🎤 "In the bottom tab bar of Google Sheets, I will click the `Cleaned` tab, click cell A1 in the top-left corner of the grid, and press `Command + V` to paste the headers."
+8. **Action:** Switch to `Cleaned`, click `A1`, and press `Cmd + V`.
 9. **Speak, then type the `FILTER` formula in cell `A2` (~15s):**
-   > 🎤 "In cell A2 on row 2 of the `Cleaned_Incidents` tab, I will type `=FILTER(Raw_Incidents!A2:H44, Raw_Incidents!F2:F44=\"RESOLVED\")` and press Enter to pull only the forty resolved tickets and exclude the three cancelled tickets `TKT-1041`, `TKT-1042`, and `TKT-1043`."
+   > 🎤 "In cell A2 on row 2 of the `Cleaned` tab, I will type `=FILTER(Raw_Incidents!A2:H44, Raw_Incidents!F2:F44=\"RESOLVED\")` and press Enter to pull only the forty resolved tickets and exclude the three cancelled tickets `TKT-1041`, `TKT-1042`, and `TKT-1043`."
 10. **Action:** In cell `A2`, type:
     ```excel
     =FILTER(Raw_Incidents!A2:H44, Raw_Incidents!F2:F44="RESOLVED")
     ```
     and press **Enter**.
 11. **Speak while scrolling down to row 41 with the mouse:**
-    > 🎤 "Scrolling down to row 41 in the center grid of `Cleaned_Incidents`, notice the filtered dataset ends on row 41, giving us forty valid resolved incidents from row 2 to row 41 with all cancelled tickets excluded."
+    > 🎤 "Scrolling down to row 41 in the center grid of `Cleaned`, notice the filtered dataset ends on row 41, giving us forty valid resolved incidents from row 2 to row 41 with all cancelled tickets excluded."
 
 ---
 
-### SECTION D: Calculate `Overrun_Hours` and `SLA_Status` (`08:00 – 11:45`)
+### SECTION D: Calculate `Overrun` and `SLA` (`08:00 – 11:45`)
 
-1. **Speak, then type headers in `I1` and `J1` (~8s):**
-   > 🎤 "Scrolling back to row 1 of `Cleaned_Incidents`, I will click cell I1, type `Overrun_Hours`, press Tab to move to cell J1, type `SLA_Status`, and press Enter to label our two calculated SLA columns."
-2. **Action:** Type `Overrun_Hours` in `I1` and `SLA_Status` in `J1`.
+1. **Speak, then type short 1-word headers in `I1` and `J1` (~4s):**
+   > 🎤 "Scrolling back to row 1 of `Cleaned`, I will click cell I1, type `Overrun`, press Tab to move to cell J1, type `SLA`, and press Enter to label our two calculated SLA columns."
+2. **Action:** Type `Overrun` in `I1` and `SLA` in `J1`.
 3. **Speak, then type formula in `I2` (~10s):**
-   > 🎤 "In cell I2 on row 2 of `Cleaned_Incidents`, I will type `=MAX(0, H2-G2)` and press Enter so that tickets resolved within target show zero overrun hours while breached tickets show the exact hours exceeded, and I will click the checkmark in the Suggested autofill popup to fill down to row 41."
+   > 🎤 "In cell I2 on row 2 of `Cleaned`, I will type `=MAX(0, H2-G2)` and press Enter so that tickets resolved within target show zero overrun hours while breached tickets show the exact hours exceeded, and I will click the checkmark in the Suggested autofill popup to fill down to row 41."
 4. **Action:** Type `=MAX(0, H2-G2)` in `I2`, press **Enter**, and accept autofill (or double-click the bottom-right fill handle of `I2` down to `I41`).
 5. **Speak, then type formula in `J2` (~15s):**
-   > 🎤 "In cell J2 on row 2 of `Cleaned_Incidents`, I will type `=IF(H2<=G2, \"Met\", \"Breached\")` and press Enter to classify whether each incident met or breached its target SLA hours, then fill the formula down to cell J41."
+   > 🎤 "In cell J2 on row 2 of `Cleaned`, I will type `=IF(H2<=G2, \"Met\", \"Breached\")` and press Enter to classify whether each incident met or breached its target SLA hours, then fill the formula down to cell J41."
 6. **Action:** Type `=IF(H2<=G2, "Met", "Breached")` in `J2`, press **Enter**, and fill down to `J41`.
 7. **Speak while slowly scrolling down columns `I` and `J` with the mouse (~30s of mouse inspection):**
-   > 🎤 "Let's scroll down columns I and J in the center grid of `Cleaned_Incidents` using the mouse to verify our row-level results. On row 11, `TKT-1010` for Test Company 1 took 11 hours against a 4-hour P1 SLA, showing 7 overrun hours and `Breached`. Scrolling further down to rows 20 and 21, Test Company 2 has two breached tickets (`TKT-1019` and `TKT-1020`). And on rows 28 through 31, Test Company 3 has four consecutive breached tickets (`TKT-1027` through `TKT-1030`), whereas Test Company 4 at the bottom has zero breaches across all ten of its tickets."
+   > 🎤 "Let's scroll down columns I and J in the center grid of `Cleaned` using the mouse to verify our row-level results. On row 11, `TKT-1010` for Test Company 1 took 11 hours against a 4-hour P1 SLA, showing 7 overrun hours and `Breached`. Scrolling further down to rows 20 and 21, Test Company 2 has two breached tickets (`TKT-1019` and `TKT-1020`). And on rows 28 through 31, Test Company 3 has four consecutive breached tickets (`TKT-1027` through `TKT-1030`), whereas Test Company 4 at the bottom has zero breaches across all ten of its tickets."
 
 ---
 
@@ -201,18 +201,18 @@ Verify the exact Google Sheets formulas I should use once the 40 valid RESOLVED 
 1. **Speak, then click `Contract_Terms`:**
    > 🎤 "In the bottom tab bar of Google Sheets, I will click the `Contract_Terms` tab, where cells A2 through G5 hold the contract owners `Person 1` through `Person 4`, monthly retainers, Q3 spend, and penalty percentages for `Test Company 1` through `Test Company 4`."
 2. **Action:** Click the `Contract_Terms` tab.
-3. **Speak, then type headers in `H1:J1` (~12s):**
-   > 🎤 "In cell H1 on row 1 of `Contract_Terms`, I will type `Resolved_Tickets`, press Tab to cell I1 and type `Breached_Tickets`, and press Tab to cell J1 and type `SLA_Compliance_Pct`."
-4. **Action:** Type `Resolved_Tickets` in `H1`, `Breached_Tickets` in `I1`, and `SLA_Compliance_Pct` in `J1`.
-5. **Speak, then type headers in `K1:L1` (~8s):**
-   > 🎤 "In cell K1 on row 1 of `Contract_Terms`, I will type `SLA_Tier`, press Tab to cell L1, type `Q3_Penalty_USD`, and press Enter."
-6. **Action:** Type `SLA_Tier` in `K1` and `Q3_Penalty_USD` in `L1`.
-7. **Speak, then type formula in `H2` (~15s):**
-   > 🎤 "In cell H2 on row 2 of `Contract_Terms`, I will type `=COUNTIF(Cleaned_Incidents!$C$2:$C$41, A2)` and press Enter to count the resolved tickets for Test Company 1, then fill down from H2 to H5."
-8. **Action:** Type `=COUNTIF(Cleaned_Incidents!$C$2:$C$41, A2)` in `H2` and fill down to `H5` (all 4 show `10`).
-9. **Speak, then type formula in `I2` (~22s):**
-   > 🎤 "In cell I2 on row 2 of `Contract_Terms`, I will type `=COUNTIFS(Cleaned_Incidents!$C$2:$C$41, A2, Cleaned_Incidents!$J$2:$J$41, \"Breached\")` and press Enter to count the breached tickets for each vendor, then fill down from I2 to I5."
-10. **Action:** Type `=COUNTIFS(Cleaned_Incidents!$C$2:$C$41, A2, Cleaned_Incidents!$J$2:$J$41, "Breached")` in `I2` and fill down to `I5` (shows `1`, `2`, `4`, `0`).
+3. **Speak, then type short 1-word headers in `H1:J1` (~6s):**
+   > 🎤 "In cell H1 on row 1 of `Contract_Terms`, I will type `Resolved`, press Tab to cell I1 and type `Breached`, and press Tab to cell J1 and type `Compliance`."
+4. **Action:** Type `Resolved` in `H1`, `Breached` in `I1`, and `Compliance` in `J1`.
+5. **Speak, then type short 1-word headers in `K1:L1` (~4s):**
+   > 🎤 "In cell K1 on row 1 of `Contract_Terms`, I will type `Tier`, press Tab to cell L1, type `Penalty`, and press Enter."
+6. **Action:** Type `Tier` in `K1` and `Penalty` in `L1`.
+7. **Speak, then type formula in `H2` (~10s):**
+   > 🎤 "In cell H2 on row 2 of `Contract_Terms`, I will type `=COUNTIF(Cleaned!$C$2:$C$41, A2)` and press Enter to count the resolved tickets for Test Company 1, then fill down from H2 to H5."
+8. **Action:** Type `=COUNTIF(Cleaned!$C$2:$C$41, A2)` in `H2` and fill down to `H5` (all 4 show `10`).
+9. **Speak, then type formula in `I2` (~15s):**
+   > 🎤 "In cell I2 on row 2 of `Contract_Terms`, I will type `=COUNTIFS(Cleaned!$C$2:$C$41, A2, Cleaned!$J$2:$J$41, \"Breached\")` and press Enter to count the breached tickets for each vendor, then fill down from I2 to I5."
+10. **Action:** Type `=COUNTIFS(Cleaned!$C$2:$C$41, A2, Cleaned!$J$2:$J$41, "Breached")` in `I2` and fill down to `I5` (shows `1`, `2`, `4`, `0`).
 11. **Speak, then type formula in `J2` (~10s):**
     > 🎤 "In cell J2 on row 2 of `Contract_Terms`, I will type `=(H2-I2)/H2` and press Enter to calculate the SLA compliance rate, fill down from J2 to J5, and click the `Format as percent (%)` button in the top toolbar of Google Sheets."
 12. **Action:** Type `=(H2-I2)/H2` in `J2`, fill down to `J5`, and click **`%`** in the top toolbar (shows `90.0%`, `80.0%`, `60.0%`, `100.0%`).
@@ -234,7 +234,7 @@ Verify the exact Google Sheets formulas I should use once the 40 valid RESOLVED 
 
 ### SECTION F: Compile the Executive Audit Memo in Google Docs (`17:15 – 21:00`)
 
-*(Note: Keep the 3 typed bullets here concise as written below, and spend ~20 seconds pointing with your mouse at the pasted chart and table between bullets—this is what keeps your total typing percentage well below 25% without changing your Sheets workflow!)*
+*(Note: Keep the 3 typed bullets here ultra-concise (8 words each) as written below, and spend ~20 seconds pointing with your mouse at the pasted chart and table between bullets—this easily cuts ~40 seconds of typing and drops you well below 25%!)*
 
 1. **Speak, then click the Google Docs tab:**
    > 🎤 "In the top browser tab bar, I will click the second tab titled `Q3 Vendor SLA Audit & Remediation Memo` in Google Docs to draft the executive summary report."
@@ -242,21 +242,21 @@ Verify the exact Google Sheets formulas I should use once the 40 valid RESOLVED 
 3. **Speak, then paste the chart:**
    > 🎤 "In the center page of Google Docs, below the first section heading, I will press `Command + V` and click `Paste` in the Link to spreadsheet dialog to embed our SLA compliance chart. Looking at the pasted chart in the center of the document, we can clearly see Test Company 4 at 100%, Test Company 1 at 90%, Test Company 2 at 80%, and Test Company 3 at 60%."
 4. **Action:** Switch back to the Google Sheets tab briefly to copy `A1:L5` (`Cmd + C`), return to the Google Docs tab, and press `Cmd + V` below the second section heading to paste the linked scorecard summary table. Point with your mouse across the pasted table rows for ~15 seconds while narrating the columns.
-5. **Speak, then type 3 concise executive summary bullets (under 12s of typing each, with mouse pointing in between):**
-   - **Bullet 1 (~10s typing):**
+5. **Speak, then type 3 ultra-concise executive summary bullets (~6s of typing each, with mouse pointing in between):**
+   - **Bullet 1 (~6s typing):**
      > 🎤 "Below the Key Audit Findings heading in the center page of Google Docs, I will type our first bullet summarizing the 40 audited tickets and 82.5% portfolio compliance."
      ```text
-     • Portfolio Overview: 40 resolved tickets audited (2 duplicates, 3 cancelled excluded); 82.5% compliance across $195,000 Q3 spend.
+     • 40 resolved tickets audited; 82.5% portfolio SLA compliance.
      ```
-   - **Bullet 2 (~10s typing):**
+   - **Bullet 2 (~6s typing):**
      > 🎤 "On the second bullet line in the center page of Google Docs, I will type the $9,900 Q3 service credit recovery across Test Company 3 and Test Company 2."
      ```text
-     • Service Credits: $9,900 total penalty ($8,100 from Test Company 3 at 60% Breach; $1,800 from Test Company 2 at 80% Warning).
+     • $9,900 total penalty ($8,100 Company 3; $1,800 Company 2).
      ```
-   - **Bullet 3 (~10s typing):**
+   - **Bullet 3 (~6s typing):**
      > 🎤 "On the third bullet line in the center page of Google Docs, I will type the 30-day Corrective Action Plan requirement for Person 3 at Test Company 3."
      ```text
-     • Action Plan: Person 3 at Test Company 3 must submit a 30-day Corrective Action Plan for P1 Database and Auth breaches.
+     • 30-day Corrective Action Plan required from Person 3.
      ```
 6. **Export `.pdf` (`final output 2.pdf`):**
    > 🎤 "In the top menu bar of Google Docs, I will click `File`, hover over `Download`, and select `PDF Document (.pdf)` to export our completed executive audit memo."
