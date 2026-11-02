@@ -1,5 +1,0 @@
-Sales_Rep,Region,Base_Salary_USD,Q4_Quota_USD,Min_Quota_Threshold,Standard_Bonus_Pct,Accelerator_Bonus_Pct
-Person 1,North America,25000,400000,0.8,0.05,0.1
-Person 2,EMEA,22000,350000,0.8,0.05,0.1
-Person 3,APAC,20000,300000,0.8,0.05,0.1
-Person 4,LATAM,23000,250000,0.8,0.05,0.1
