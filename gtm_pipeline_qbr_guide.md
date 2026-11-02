@@ -167,26 +167,124 @@ Based on the audit totals above, draft 3 concise 7-word executive bullet points 
 3. Click the **yellow Minimize button (`-`)** on the Goal document window and open **Google Sheets** from the Dock.
 
 ### SECTION B: Inspect `Product_Catalog` & `Deal_Orders` with the Mouse (`00:20 – 03:30`)
-1. Spend ~90 seconds scrolling through `Product_Catalog` (`SKU-101` to `SKU-105`) and `Deal_Orders` (`ORD-301` to `ORD-330`) with your mouse, pointing out the `20%` max approved discount, the `65%` gross margin floor, and the orders where reps applied `30%–40%` discounts.
+
+1. **Speak, then click `Product_Catalog`:**
+   > 🎤 "In the bottom-left sheet tab bar of Google Sheets, I will first click the `Product_Catalog` tab to review our five SaaS SKU tiers from `SKU-101` to `SKU-105`. Looking across columns A through F in the center grid, each SKU lists its annual list price per seat in column C, annual hosting and support COGS per seat in column D, maximum approved rep discount of `20%` in column E, and our company-wide `65%` gross margin floor in column F."
+2. **Action:** Click `Product_Catalog` and move your mouse across `A2:F6` (~30s).
+3. **Speak, then click `Deal_Orders` and scroll down with the mouse (~45s):**
+   > 🎤 "Now in the bottom sheet tab bar, I will click the `Deal_Orders` tab, which contains thirty Q4 enterprise orders from `ORD-301` on row 2 down to `ORD-330` on row 31 across `Test Client 1` through `Test Client 30` and sales reps `Person 1` through `Person 4`. Scrolling down column H (`Discount_Pct`) with the mouse, notice that while most orders stayed within the `20%` discount cap, several orders were given `30%` to `45%` discounts. Let's scroll back up to row 1 so we can pull catalog prices and audit each order's gross margin."
+4. **Action:** Click `Deal_Orders`, scroll down `A2:H31`, and return to row 1.
+
+---
 
 ### SECTION C: Pull Catalog Prices via `VLOOKUP` & Compute Gross Margin (`03:30 – 09:30`)
-1. Type the 6 short 1-word headers in `I1:N1` (`Price`, `Unit_Cost`, `Net_ARR`, `COGS`, `Margin`, `Status`).
-2. Enter the `VLOOKUP` formulas in `I2` and `J2`, the revenue/cost/margin formulas in `K2:M2`, and the `IF` formula in `N2`, filling each down to row 31 and formatting `K:L` as Currency and `M` as Percent (`%`) via toolbar mouse clicks.
+
+1. **Speak, then type the 6 short 1-word headers in `I1:N1` (~10s):**
+   > 🎤 "In row 1 of `Deal_Orders`, starting at cell I1, I will type our six 1-word calculated column headers using Tab: `Price` in I1, `Unit_Cost` in J1, `Net_ARR` in K1, `COGS` in L1, `Margin` in M1, and `Status` in N1."
+2. **Action:** Type `Price` (`I1`), `Unit_Cost` (`J1`), `Net_ARR` (`K1`), `COGS` (`L1`), `Margin` (`M1`), and `Status` (`N1`).
+3. **Speak, then type `VLOOKUP` for `Price` in `I2` (~15s):**
+   > 🎤 "In cell I2 on row 2 of `Deal_Orders`, I will type `=VLOOKUP(F2, Product_Catalog!$A$2:$D$6, 3, FALSE)` and press Enter to look up the annual list price per seat for the SKU in cell F2 from column 3 of `Product_Catalog`, and I will accept the autofill down to row 31."
+4. **Action:** Type `=VLOOKUP(F2, Product_Catalog!$A$2:$D$6, 3, FALSE)` in `I2`, press **Enter**, and fill down to `I31`.
+5. **Speak, then type `VLOOKUP` for `Unit_Cost` in `J2` (~15s):**
+   > 🎤 "In cell J2 on row 2, I will type `=VLOOKUP(F2, Product_Catalog!$A$2:$D$6, 4, FALSE)` and press Enter to pull the unit COGS per seat from column 4 of `Product_Catalog`, then fill down to J31."
+6. **Action:** Type `=VLOOKUP(F2, Product_Catalog!$A$2:$D$6, 4, FALSE)` in `J2`, press **Enter**, and fill down to `J31`.
+7. **Speak, then type `Net_ARR` formula in `K2` (~10s):**
+   > 🎤 "In cell K2, I will type `=G2*I2*(1-H2)` and press Enter to calculate net annual recurring revenue after multiplying seats in G2 by list price in I2 and subtracting the discount percentage in H2, then fill down to K31."
+8. **Action:** Type `=G2*I2*(1-H2)` in `K2`, press **Enter**, and fill down to `K31`.
+9. **Speak, then type `COGS` formula in `L2` (~8s):**
+   > 🎤 "In cell L2, I will type `=G2*J2` and press Enter to compute total hosting COGS for the order by multiplying seats in G2 by unit cost in J2, then fill down to L31."
+10. **Action:** Type `=G2*J2` in `L2`, press **Enter**, and fill down to `L31`.
+11. **Speak, then type `Margin` formula in `M2` (~10s):**
+    > 🎤 "In cell M2, I will type `=(K2-L2)/K2` and press Enter to calculate the order's gross margin percentage, fill down to M31, and click the `Format as percent (%)` button in the top toolbar."
+12. **Action:** Type `=(K2-L2)/K2` in `M2`, fill down to `M31`, and click **`%`** in the top toolbar.
+13. **Speak, then type `Status` formula in `N2` (~12s):**
+    > 🎤 "In cell N2, I will type `=IF(M2>=0.65, \"Approved\", \"Breach\")` and press Enter to flag whether each order meets our `65%` gross margin floor or falls into `Breach`, then fill down to N31."
+14. **Action:** Type `=IF(M2>=0.65, "Approved", "Breach")` in `N2`, press **Enter**, and fill down to `N31`.
+
+---
 
 ### SECTION D: Highlight Breaches via Conditional Formatting (`09:30 – 12:00`)
-1. Select `N2:N31`, click **Format → Conditional formatting**, set rule **Text is exactly → `Breach`**, choose light red fill, click **Done**, and scroll down with the mouse to inspect each highlighted breach row.
+
+*(100% mouse-driven GUI formatting + inspection!)*
+
+1. **Speak, then apply Conditional Formatting to `N2:N31`:**
+   > 🎤 "To visually spotlight the margin breaches, I will select cells `N2` through `N31` with the mouse, click `Format` in the top menu bar of Google Sheets, and click `Conditional formatting` in the dropdown menu."
+2. **Action:** Select `N2:N31` and click **Format → Conditional formatting**.
+3. **Speak, then configure the rule in the right sidebar:**
+   > 🎤 "In the Conditional format rules sidebar on the right side of the screen, under `Format cells if`, I will click the dropdown menu, select `Text is exactly`, type `Breach` in the value box, select the light red fill style under Formatting style, and click the green `Done` button."
+4. **Action:** Set **Text is exactly** → `Breach`, choose light red fill, and click **Done**. Close the Conditional format sidebar (`X`).
+5. **Speak while scrolling down `Deal_Orders` with the mouse (~35s):**
+   > 🎤 "Scrolling down columns H, M, and N in the center grid with the mouse, every order highlighted in red in column N had an excessive discount in column H that pushed its gross margin in column M below our `65.0%` floor."
+
+---
 
 ### SECTION E: Build Mouse-Driven Pivot Table, Interactive Slicer & Chart (`12:00 – 17:15`)
-1. Select `A1:N31`, click **Insert → Pivot table → Create**, and configure Rows (`SKU_Code`), Columns (`Status`), and Values (`Net_ARR`, `Margin`) in the right sidebar using mouse clicks.
-2. Click **Data → Add a slicer**, select `Region`, and demonstrate filtering the Pivot Table live with the mouse.
-3. Select the SKU/Regional summary cells, click **Insert → Chart**, position the chart below the table, copy the chart, and export the workbook via **File → Download → Microsoft Excel (`.xlsx`)**.
+
+1. **Speak, then create Pivot Table:**
+   > 🎤 "Next, let's build a Pivot Table to aggregate Net ARR, average Gross Margin, and breach counts across our five SaaS SKUs. I will click cell A1 in `Deal_Orders`, press `Command + A` to select `A1:N31`, click `Insert` in the top menu bar, and click `Pivot table`, then click `Create` in the center dialog box to place it on a new sheet."
+2. **Action:** Select `A1:N31`, click **Insert → Pivot table → Create**.
+3. **Speak while configuring the Pivot Table in the right sidebar (100% mouse clicks):**
+   > 🎤 "In the Pivot table editor sidebar on the right, next to `Rows`, I will click `Add` and select `SKU_Code`. Next to `Columns`, I will click `Add` and select `Status` so `Approved` and `Breach` orders appear side by side. Next to `Values`, I will click `Add` and select `Net_ARR` (summarized by `SUM`), and I will click `Add` under `Values` a second time, select `Margin`, and change the `Summarize by` dropdown from `SUM` to `AVERAGE`."
+4. **Action:** Configure Rows (`SKU_Code`), Columns (`Status`), and Values (`Net_ARR` as `SUM`, `Margin` as `AVERAGE`).
+5. **Speak, then add an Interactive Data Slicer (`Data → Add a slicer`):**
+   > 🎤 "To allow leadership to filter this SKU summary interactively by sales region, I will click `Data` in the top menu bar and select `Add a slicer`. In the Slicer sidebar on the right, under `Column`, I will choose `Region`, drag the floating Slicer widget above our Pivot Table, click the Slicer dropdown with the mouse, and demonstrate filtering by individual regions before selecting `Select all` and clicking `OK`."
+6. **Action:** Click **Data → Add a slicer**, choose **`Region`**, test filtering with the mouse, then reset to **Select all → OK**.
+7. **Speak, then create the SKU Margin & Revenue Chart (`Insert → Chart`):**
+   > 🎤 "Now I will select the SKU summary range in our Pivot Table, click `Insert` in the top menu bar, and select `Chart` to generate a visual comparison across `SKU-101` through `SKU-105`. I will drag the chart below the table, click the three-dot menu in the top-right corner of the chart, and click `Copy chart`."
+8. **Action:** Insert chart, position it cleanly, and copy it.
+9. **Speak, then export `.xlsx` (`final output 1.xlsx`):**
+   > 🎤 "In the top menu bar of Google Sheets, I will click `File`, hover over `Download`, and select `Microsoft Excel (.xlsx)` to export our completed Deal Desk Margin Audit workbook."
+10. **Action:** Click **File → Download → Microsoft Excel (`.xlsx`)**.
+
+---
 
 ### SECTION F: Assemble 3-Slide Executive Deck in Google Slides (`17:15 – 21:00`)
-1. Switch to the **Google Slides** tab, paste the linked Chart and Pivot Summary Table onto **Slide 2**, and align them with the mouse.
-2. Click **Slide 3**, type 3 ultra-short 7-word takeaway bullets, and export via **File → Download → PDF Document (`.pdf`)**.
+
+1. **Speak, then switch to Google Slides:**
+   > 🎤 "In the top browser tab bar, I will click the second tab titled `Q4 Deal Desk Pricing & Margin Review` in Google Slides to compile our three-slide executive presentation."
+2. **Action:** Click the Google Slides tab.
+3. **Speak on Slide 1, then click Slide 2 and paste Chart + Pivot Table:**
+   > 🎤 "Slide 1 is our title slide for the `Q4 Deal Desk Pricing & Margin Review`. In the left filmstrip, I will click Slide 2 (`SKU & Regional Gross Margin Matrix`), press `Command + V`, and click `Paste` to embed our linked SKU chart on the left side. Then I will switch back to Google Sheets, copy our Pivot Table summary cells with `Command + C`, return to Slide 2 in Google Slides, and press `Command + V` to place the linked summary table on the right side of the slide."
+4. **Action:** Paste the chart and Pivot Table onto **Slide 2** and resize/align them with the mouse (~30s).
+5. **Speak, then click Slide 3 and type 3 ultra-short 7-word bullets (~6s of typing each):**
+   - Click **Slide 3** (`Deal Desk Policy Guardrails & Action Plan`) in the left filmstrip:
+   - **Bullet 1 (~6s typing):**
+     > 🎤 "On Slide 3, in the center text box, I will type our first bullet summarizing the 30 audited orders and portfolio gross margin."
+     ```text
+     Audited 30 Q4 enterprise orders across 5 SaaS SKUs (65% margin floor).
+     ```
+   - **Bullet 2 (~6s typing):**
+     > 🎤 "On the second bullet line, I will type the finding on unauthorized discounts above 20% causing margin breaches."
+     ```text
+     Discounts above 20% triggered all gross margin breaches below 65%.
+     ```
+   - **Bullet 3 (~6s typing):**
+     > 🎤 "On the third bullet line, I will type the Q1 Deal Desk policy guardrail requiring VP Finance sign-off."
+     ```text
+     Q1 Policy: Enforce 20% discount cap; require VP Finance approval above 20%.
+     ```
+6. **Speak, then export `.pdf` (`final output 2.pdf`):**
+   > 🎤 "In the top menu bar of Google Slides, I will click `File`, hover over `Download`, and click `PDF Document (.pdf)` to export our finished Q4 Deal Desk review deck."
+7. **Action:** Click **File → Download → PDF Document (`.pdf`)**.
+
+---
 
 ### SECTION G: 3-Minute Verbal Epilogue (`21:00 – 24:00`)
-1. Deliver the 3-minute verbal summary (Completion & Verification, Why `VLOOKUP` + `Pivot Table` + `Conditional Formatting` was effective, and 3 common mistakes to avoid in SaaS margin audits) while clicking through your slides and sheets with the mouse.
+
+*(Slowly click through Slides 1–3 in Google Slides and the `Product_Catalog`, `Deal_Orders`, and `Pivot Table` tabs in Google Sheets with your mouse while speaking—zero typing!)*
+
+> 🎤 "Let's wrap up with a summary of our workflow, key methodological decisions, and lessons learned.
+>
+> First, completion and verification: we completed the Q4 SaaS Enterprise Deal Desk Pricing, Discount, and Gross Margin Audit across thirty customer orders (`ORD-301` through `ORD-330`) and five SaaS SKUs (`SKU-101` through `SKU-105`). In Google Sheets, we used `VLOOKUP` to pull each SKU's list price and unit COGS from `Product_Catalog` into `Deal_Orders`, computed net ARR after rep discounts, total hosting COGS, and gross margin percentage per order, and classified every order against our `65%` gross margin floor. We then applied conditional formatting to highlight breaching orders in red, constructed a Pivot Table and interactive Region Data Slicer to inspect revenue and margin across SKUs and regions, and compiled our three-slide executive review deck in Google Slides, exporting both the Excel workbook and the PDF presentation.
+>
+> Second, why this approach was effective: maintaining unit list prices and unit COGS in a normalized `Product_Catalog` table and retrieving them via `VLOOKUP` eliminates manual pricing entry errors across individual orders. Pairing row-level conditional formatting with a Pivot Table and Region Slicer allows Deal Desk leadership to spot both individual rep discount exceptions and systemic SKU-level margin compression at a glance.
+>
+> Third, common mistakes that someone less experienced should watch out for in a SaaS pricing and gross margin audit:
+> - Number one: omitting the `FALSE` exact-match fourth argument in `VLOOKUP` or forgetting absolute dollar signs (`$A$2:$D$6`) on the catalog lookup range, which causes lookup references to shift when filled down.
+> - Number two: evaluating sales orders solely on top-line Net ARR without deducting seat-level hosting COGS—since a large enterprise order with a `35%` to `40%` discount can generate high top-line revenue while eroding gross margin well below the `65%` profitability threshold.
+> - Number three: summing margin percentages in a Pivot Table instead of changing the aggregation function from `SUM` to `AVERAGE`, which produces meaningless percentage totals above `100%`.
+>
+> All deliverables are exported and ready for packaging. Thank you for watching."
 
 ---
 
